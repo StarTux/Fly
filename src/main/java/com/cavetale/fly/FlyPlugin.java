@@ -68,7 +68,7 @@ public final class FlyPlugin extends JavaPlugin implements Listener {
         } catch (NumberFormatException nfe) {
             speed = 0;
         }
-        if (speed < 1 || speed > 10) {
+        if (speed < 0.0f || speed > 10.0f) {
             sender.sendMessage(ChatColor.RED + "Invalid speed: " + args[0]);
             return true;
         }
