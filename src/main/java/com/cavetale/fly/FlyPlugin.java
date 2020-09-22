@@ -62,9 +62,9 @@ public final class FlyPlugin extends JavaPlugin implements Listener {
             return true;
         }
         if (args.length != 1) return false;
-        int speed;
+        float speed;
         try {
-            speed = Integer.parseInt(args[0]);
+            speed = Float.parseFloat(args[0]);
         } catch (NumberFormatException nfe) {
             speed = 0;
         }
