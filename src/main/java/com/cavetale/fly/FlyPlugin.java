@@ -39,8 +39,7 @@ public final class FlyPlugin extends JavaPlugin implements Listener {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command,
-                             String label, String[] args) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
             sender.sendMessage("Player expected");
             return true;
@@ -75,10 +74,12 @@ public final class FlyPlugin extends JavaPlugin implements Listener {
         float floatSpeed = (float) speed * 0.1f;
         switch (label) {
         case "flyspeed":
+        case "fly:flyspeed":
             player.setFlySpeed(floatSpeed);
             player.sendMessage(ChatColor.AQUA + "Fly speed set to " + speed);
             break;
         case "walkspeed":
+        case "fly:walkspeed":
             player.setWalkSpeed(floatSpeed);
             player.sendMessage(ChatColor.GREEN + "Walk speed set to " + speed);
             break;
