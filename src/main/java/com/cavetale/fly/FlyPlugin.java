@@ -11,6 +11,8 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class FlyPlugin extends JavaPlugin implements Listener {
+    public static final String PERM = "fly.speed";
+
     public void onEnable() {
         this.getServer().getPluginManager().registerEvents(this, this);
         for (Player player : getServer().getOnlinePlayers()) {
@@ -28,14 +30,18 @@ public final class FlyPlugin extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        event.getPlayer().setFlySpeed(0.1f);
-        event.getPlayer().setWalkSpeed(0.2f);
+        if (!event.getPlayer().hasPermission(PERM)) {
+            event.getPlayer().setFlySpeed(0.1f);
+            event.getPlayer().setWalkSpeed(0.2f);
+        }
     }
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
-        event.getPlayer().setFlySpeed(0.1f);
-        event.getPlayer().setWalkSpeed(0.2f);
+        if (!event.getPlayer().hasPermission(PERM)) {
+            event.getPlayer().setFlySpeed(0.1f);
+            event.getPlayer().setWalkSpeed(0.2f);
+        }
     }
 
     @Override

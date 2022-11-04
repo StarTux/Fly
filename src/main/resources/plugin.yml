@@ -1,16 +1,19 @@
 main: com.cavetale.fly.FlyPlugin
-
 name: Fly
+
 version: 0.1
-api-version: 1.17
+api-version: 1.19
+
 description: Set your fly speed
 author: StarTux
 
 commands:
+
   flyspeed:
     description: Set your fly speed
     usage: /flyspeed <speed>
     permission: fly.speed
+
   walkspeed:
     description: Set your walk speed
     usage: /walkspeed <speed>
