@@ -1,6 +1,5 @@
 package com.cavetale.fly;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -9,6 +8,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import static net.kyori.adventure.text.Component.text;
+import static net.kyori.adventure.text.format.NamedTextColor.*;
 
 public final class FlyPlugin extends JavaPlugin implements Listener {
     public static final String PERM = "fly.speed";
@@ -55,11 +56,11 @@ public final class FlyPlugin extends JavaPlugin implements Listener {
             switch (label) {
             case "flyspeed":
                 int flySpeed = (int) (player.getFlySpeed() * 10.0f);
-                player.sendMessage(ChatColor.AQUA + "Fly speed: " + flySpeed);
+                player.sendMessage(text("Fly speed: " + flySpeed, AQUA));
                 break;
             case "walkspeed":
                 int walkSpeed = (int) (player.getWalkSpeed() * 10.0f);
-                player.sendMessage(ChatColor.GREEN + "Walk speed: " + walkSpeed);
+                player.sendMessage(text("Walk speed: " + walkSpeed, GREEN));
                 break;
             default:
                 throw new IllegalStateException("label=" + label);
@@ -74,7 +75,7 @@ public final class FlyPlugin extends JavaPlugin implements Listener {
             speed = 0;
         }
         if (speed < 0.0f || speed > 10.0f) {
-            sender.sendMessage(ChatColor.RED + "Invalid speed: " + args[0]);
+            sender.sendMessage(text("Invalid speed: " + args[0], RED));
             return true;
         }
         float floatSpeed = (float) speed * 0.1f;
@@ -82,12 +83,12 @@ public final class FlyPlugin extends JavaPlugin implements Listener {
         case "flyspeed":
         case "fly:flyspeed":
             player.setFlySpeed(floatSpeed);
-            player.sendMessage(ChatColor.AQUA + "Fly speed set to " + speed);
+            player.sendMessage(text("Fly speed set to " + speed, AQUA));
             break;
         case "walkspeed":
         case "fly:walkspeed":
             player.setWalkSpeed(floatSpeed);
-            player.sendMessage(ChatColor.GREEN + "Walk speed set to " + speed);
+            player.sendMessage(text("Walk speed set to " + speed, GREEN));
             break;
         default:
             throw new IllegalStateException("label=" + label);
